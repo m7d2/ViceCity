@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css"/>
     <link rel="stylesheet" href="./styles/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" defer></script>
-    <script src="https://www.youtube.com/iframe_api" defer></script>
+    
     <script src="./js/main.js" defer></script>
     
 </head>
@@ -17,7 +17,6 @@
 
 <!-- Container for the YouTube video player -->
 <div id="player"></div>
-    
     <div class="desc">
         <div class="logo">Vice City</div>
         <p>Welcome to Vice City, where the sun-kissed shores meet the neon-lit streets in a symphony of excitement and opportunity.
@@ -33,7 +32,7 @@
                 </div>
             </div>
             <div class="swiper-slide slider_item">
-                <div class="slider_img" data-swiper-parallax="30%" style="background-image: url(./images/vc2.jpg);">
+                <div class="slider_img" data-swiper-parallax="30%" style="background-image: url(./images/V9.webp);">
 
                 </div>
             </div>
@@ -118,6 +117,43 @@
         </div>
     </div>
 
+<!-- Include the YouTube Iframe API script -->
+<script src="https://www.youtube.com/iframe_api"></script>
 
+<!-- JavaScript code for initializing the player -->
+<script>
+// Function called when the YouTube Iframe API is ready
+function onYouTubeIframeAPIReady() {
+  // Create a new YouTube player object
+  const player = new YT.Player('player', {
+    height: '0',
+    width: '0',
+    videoId: 'kTCOQSHohsE', // YouTube video ID
+    playerVars: {
+      'autoplay': 0, // Do not autoplay the video
+      'loop': 1, // Loop the video
+      'controls': 0, // Hide player controls
+      'rel': 0, // Hide related videos at the end
+      'showinfo': 0, // Hide video title and uploader info
+      'playlist': 'kTCOQSHohsE', // Required for looping
+      'mute': 0, // Do not mute the video
+      'start': 0, // Start playback at the beginning
+      'volume': 10 // Set volume to 10 (range: 0 to 100)
+    }
+  });
+
+  // Add event listener to start playing the video when the user interacts with the website
+  function startVideo() {
+    // Check if the video is already playing
+    if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+      player.playVideo();
+    }
+  }
+
+  // Add event listeners for click and mouse wheel events
+  document.body.addEventListener('click', startVideo);
+  document.body.addEventListener('wheel', startVideo);
+}
+</script>
 </body>
 </html>
