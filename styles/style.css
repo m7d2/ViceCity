@@ -59,6 +59,7 @@ body, html {
     overflow: hidden;
     cursor: pointer;
     transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+    border-radius: 10px;
 }
 
 .slider_item:hover {
@@ -80,6 +81,7 @@ body, html {
     left: -100%;
     transition: var(--transition)!important;
     will-change: transform;
+    
     /* object-fit: cover; */
 }
 
