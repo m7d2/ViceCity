@@ -58,13 +58,24 @@ body, html {
     max-height: 75vh;
     overflow: hidden;
     cursor: pointer;
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+
+.slider_item:hover {
+    /* Styles for individual item when hovered */
+    filter: grayscale(0); /* Reset grayscale */
+}
+
+.slider_wrapper:hover .slider_item:not(:hover) {
+    /* Styles for other items when one of them is hovered */
+    filter: grayscale(1); /* Apply grayscale effect */
 }
 
 .slider_img {
     width: 300%;
     height: 100%;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     position: absolute;
     left: -100%;
     transition: var(--transition)!important;
@@ -123,3 +134,35 @@ body, html {
 .desc.hidden p {
     transform: translateY(2vh);
 }
+
+.slider_item.pop {
+   transition: transform var(--transition)!important;
+    animation: pop .4s ease-in-out forwards alternate;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.slider_item.unpop {
+   transition: transform var(--transition)!important;
+    animation: unpop .2s ease forwards;
+}
+
+@keyframes unpop {
+    from {
+        transform: scale(1.2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+

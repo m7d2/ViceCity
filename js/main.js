@@ -37,12 +37,28 @@ document.querySelectorAll('.slider_item').forEach(item => {
         }
         e.stopPropagation(); // Prevent click event propagation to document
     });
+
+    // item.addEventListener('mouseenter', e => {
+    //     //
+    //     item.classList.toggle('pop');
+        
+    // });
+
+    // item.addEventListener('mouseleave', e => {
+    //     //
+    //     item.classList.toggle('pop');
+    //     item.classList.add('unpop');
+    //     setTimeout(() => {
+    //         item.classList.remove('unpop');
+    //     }, 200)
+    // });
 });
 
 document.addEventListener('click', e => {
     document.querySelectorAll('.slider_item').forEach(item => {
         if (!item.contains(e.target)) {
             item.classList.remove('opened');
+            item.classList.remove('unpop'); // Reset mouseleave state
         }
     });
 });
